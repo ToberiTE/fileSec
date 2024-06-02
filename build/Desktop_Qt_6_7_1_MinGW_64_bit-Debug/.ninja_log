@@ -1,0 +1,24 @@
+# ninja log v5
+0	14	0	CMakeFiles/clean.additional	baedbe210acaa455
+8	76	7390698995219215	fileSec_autogen/timestamp	5611c61e087a461e
+8	76	7390698995219215	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+8	76	7390698995219215	fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+8	76	7390698995219215	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/timestamp	5611c61e087a461e
+301	1214	7390516047331203	CMakeFiles/fileSec.dir/main.cpp.obj	f489aa81a6502e59
+302	1213	7390516047246152	CMakeFiles/fileSec.dir/fileSec_autogen/mocs_compilation.cpp.obj	479f8b64ba7a1aaf
+1827	1934	7390699013704010	fileSec.exe	426cacfc17d76129
+81	1826	7390699012617658	CMakeFiles/fileSec.dir/mainwindow.cpp.obj	60bc8ffb05330ba5
+14	18	0	clean	577b940aee94fbd7
+75	134	7390526506212693	CMakeFiles/fileSec.dir/app_resource.rc.obj	4fa443e7b57912e2
+7	72	7390702076804629	fileSec_autogen/timestamp	5611c61e087a461e
+7	72	7390702076804629	fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+7	72	7390702076804629	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/timestamp	5611c61e087a461e
+7	72	7390702076804629	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+78	1798	7390702094053296	CMakeFiles/fileSec.dir/mainwindow.cpp.obj	60bc8ffb05330ba5
+1798	1904	7390702095096016	fileSec.exe	426cacfc17d76129
+3	66	7390718820701644	fileSec_autogen/timestamp	5611c61e087a461e
+3	66	7390718820701644	fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+3	66	7390718820701644	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/timestamp	5611c61e087a461e
+3	66	7390718820701644	C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/mocs_compilation.cpp	5611c61e087a461e
+71	1762	7390718837672409	CMakeFiles/fileSec.dir/mainwindow.cpp.obj	60bc8ffb05330ba5
+1762	1866	7390718838671439	fileSec.exe	426cacfc17d76129
