@@ -352,6 +352,6 @@ C:/Users/Adminpc/Documents/Devprojects/fileSec/mainwindow.h
  mdp:C:/Qt/Tools/mingw1120_64/x86_64-w64-mingw32/include/wchar.h
  mdp:C:/Users/Adminpc/Documents/Devprojects/fileSec/build/Desktop_Qt_6_7_1_MinGW_64_bit-Debug/fileSec_autogen/moc_predefs.h
  mdp:C:/Users/Adminpc/Documents/Devprojects/fileSec/mainwindow.h
+C:/Users/Adminpc/Documents/Devprojects/fileSec/main.cpp
 C:/Users/Adminpc/Documents/Devprojects/fileSec/mainwindow.cpp
  uic:ui_mainwindow.h
-C:/Users/Adminpc/Documents/Devprojects/fileSec/main.cpp

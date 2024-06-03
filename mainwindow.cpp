@@ -43,11 +43,7 @@ void MainWindow::encryptSelectedFileButton_clicked()
         return;
     }
 
-    if(!encryptDecryptFile(true, fileName))
-    {
-        ui->statusLabel->setText("Encryption failed!");
-        ui->statusLabel->setStyleSheet("QLabel { color : red; }");
-    } else
+    if(encryptDecryptFile(true, fileName))
     {
         ui->statusLabel->setText("File encrypted successfully!");
         ui->statusLabel->setStyleSheet("QLabel { color : lightgreen; }");
@@ -57,16 +53,15 @@ void MainWindow::encryptSelectedFileButton_clicked()
 void MainWindow::decryptSelectedFileButton_clicked()
 {
     QString fileName = ui->selectedFileLabel->text();
-    if (fileName.isEmpty()) {
+    if (fileName.isEmpty())
+    {
         ui->statusLabel->setText("No file selected.");
         ui->statusLabel->setStyleSheet("QLabel { color : yellow; }");
         return;
     }
 
-    if (!encryptDecryptFile(false, fileName)) {
-        ui->statusLabel->setText("Decryption failed!");
-        ui->statusLabel->setStyleSheet("QLabel { color : red; }");
-    } else {
+    if (encryptDecryptFile(false, fileName))
+    {
         ui->statusLabel->setText("File decrypted successfully!");
         ui->statusLabel->setStyleSheet("QLabel { color : lightgreen; }");
     }
@@ -100,6 +95,22 @@ bool MainWindow::encryptDecryptFile(bool encrypt, const QString &filePath)
     QByteArray fileData = file.readAll();
     file.close();
 
+    if (encrypt && filePath.endsWith(".enc")) {
+        ui->statusLabel->setText("File is already encrypted.");
+        ui->statusLabel->setStyleSheet("QLabel { color : yellow; }");
+        BCryptCloseAlgorithmProvider(hAlg, 0);
+        BCryptDestroyKey(hKey);
+        return false;
+    }
+
+    if (!encrypt && !filePath.endsWith(".enc")) {
+        ui->statusLabel->setText("File is not encrypted.");
+        ui->statusLabel->setStyleSheet("QLabel { color : yellow; }");
+        BCryptCloseAlgorithmProvider(hAlg, 0);
+        BCryptDestroyKey(hKey);
+        return false;
+    }
+
     if (encrypt) {
         int paddingLength = AES_BLOCK_SIZE - (fileData.size() % AES_BLOCK_SIZE);
         fileData.append(paddingLength, static_cast<char>(paddingLength));
@@ -115,6 +126,8 @@ bool MainWindow::encryptDecryptFile(bool encrypt, const QString &filePath)
                           BCryptDecrypt(hKey, (PUCHAR)fileData.data(), dataLen, NULL, iv, sizeof(iv), (PUCHAR)buffer.data(), buffer.size(), &resultLen, 0);
 
     if (status != STATUS_SUCCESS) {
+        ui->statusLabel->setText(encrypt ? "Encryption failed!" : "Decryption failed!");
+        ui->statusLabel->setStyleSheet("QLabel { color : red; }");
         BCryptCloseAlgorithmProvider(hAlg, 0);
         BCryptDestroyKey(hKey);
         return false;
@@ -140,26 +153,21 @@ bool MainWindow::encryptDecryptFile(bool encrypt, const QString &filePath)
 
     file.close();
 
-    // QString newFilePath = filePath;
-    // if (encrypt && !filePath.endsWith(".enc")) {
-    //     newFilePath += ".enc";
-    //     ui->selectedFileLabel->setText(newFilePath);
-    // }
+    QString newFilePath = filePath;
 
-    // if (filePath.endsWith(".enc") || newFilePath.endsWith(".enc"))
-    // {
-    //     ui->statusLabel->setText("File is already encrypted.");
-    //     ui->statusLabel->setStyleSheet("QLabel { color : red; }");
-    // }
+    if (encrypt) {
+        newFilePath += ".enc";
+    } else {
+        newFilePath.chop(4);
+    }
 
-    // if (!encrypt && newFilePath.endsWith(".enc")) {
-    //     newFilePath.chop(4);  // Remove the .enc extension
-    // }
+    if (!QFile::rename(filePath, newFilePath)) {
+        BCryptCloseAlgorithmProvider(hAlg, 0);
+        BCryptDestroyKey(hKey);
+        return false;
+    }
 
-    // QFile::rename(filePath, newFilePath);
-
-
-
+    ui->selectedFileLabel->setText(newFilePath);
     BCryptCloseAlgorithmProvider(hAlg, 0);
     BCryptDestroyKey(hKey);
     return true;
