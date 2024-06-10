@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <minwindef.h>
+#include <bcrypt.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,7 +23,7 @@ private slots:
     void browseFilesButton_clicked();
     void encryptSelectedFileButton_clicked();
     void decryptSelectedFileButton_clicked();
-    bool encryptDecryptFile(bool, const QString &);
+    bool encryptDecryptFile(bool, const QString &, const QString &);
 
 private:
     Ui::MainWindow *ui;
